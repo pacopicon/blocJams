@@ -8,7 +8,7 @@ html {
     height: 100; /* makes sure our HTML takes up 100% of the browser window */
     font-size: 100;
 }
-
+v
 body {
      font-family: 'Open Sans'; /* sets our font to the "Open Sans" typeface */
      color: white;             /* sets the text color to white */
@@ -29,6 +29,16 @@ body {
      left: 2rem;
      cursor: pointer; /* produces the finter-pointer icon when your hover over the logo */
  }
+
+.logo {
+    -webkit-transition: -webkit-transform 3s;
+    transition: transform 3s;
+}
+
+.logo:hover {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+}
 
 .navbar .links-container {
     display: table;
@@ -57,10 +67,20 @@ body {
     /* #3 */
     text-decoration: none;
     cursor: pointer;
+    -webkit-transition: padding-right 2s, font-size 2s, letter-spacing 2s, color 2s, -webkit-transform 2s;
+    transition: padding-right 2s, font-size 2s, letter-spacing 2s, color 2s, -webkit-transform 2s;
 }
 /* #5 */
 .links-container .navbar-link:hover {
+}
+
+.navbar-link:hover {
     color: rgb(233,50,117);
+    font-size: 3.125rem;
+    letter-spacing: 0.25rem;
+    padding-right: 15rem;
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
 }
 
 .links-container .navbar-link:active {
