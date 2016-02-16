@@ -1,4 +1,19 @@
 // Example Album
+var albumCézanne = {
+     name: 'The Colors',
+     artist: 'Paul Cézanne',
+     label: 'Post-Impressionism',
+     year: '1839',
+     albumArtUrl: 'assets/images/album_covers/07.png',
+     songs: [
+         { name: 'Woman With a Green Hat', length: '5:37' },
+         { name: 'Card Players', length: '4:25' },
+         { name: 'Still Life With a Courtain', length: '6:12' },
+         { name: 'Harlequin', length: '4:32'},
+         { name: 'The House with the Cracked Walls', length: '3:26'}
+     ]
+ };
+
 var albumPicasso = {
      name: 'The Colors',
      artist: 'Pablo Picasso',
@@ -42,14 +57,14 @@ var createSongRow = function(songNumber, songName, songLength) {
      return template;
  };
 
+ // #1
+var albumTitle = document.getElementsByClassName('album-view-title')[0];
+var albumArtist = document.getElementsByClassName('album-view-artist')[0];
+var albumReleaseInfo = document.getElementsByClassName('album-view-release-info')[0];
+var albumImage = document.getElementsByClassName('album-cover-art')[0];
+var albumSongList = document.getElementsByClassName('album-view-song-list')[0];
+
 var setCurrentAlbum = function(album) {
-     // #1
-     var albumTitle = document.getElementsByClassName('album-view-title')[0];
-     var albumArtist = document.getElementsByClassName('album-view-artist')[0];
-     var albumReleaseInfo = document.getElementsByClassName('album-view-release-info')[0];
-     var albumImage = document.getElementsByClassName('album-cover-art')[0];
-     var albumSongList = document.getElementsByClassName('album-view-song-list')[0];
- 
      // #2
      albumTitle.firstChild.nodeValue = album.name;
      albumArtist.firstChild.nodeValue = album.artist;
@@ -67,5 +82,15 @@ var setCurrentAlbum = function(album) {
  
  window.onload = function() {
      setCurrentAlbum(albumPicasso);
+     
+     var albums = [albumPicasso, albumCézanne, albumMarconi];
+     var i = 1;
+     albumImage.addEventListener("click", function(event) {
+         setCurrentAlbum(albums[i]);
+         i++;
+         if (i == albums.length) {
+             index = 0;
+         }
+     };)
+     
  };
-
