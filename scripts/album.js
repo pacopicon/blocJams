@@ -90,6 +90,6 @@ var setCurrentAlbum = function(album) {
          if (i == albums.length) {
              i = 0;
          }
-     };)
+     });
      
  };
