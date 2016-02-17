@@ -1,7 +1,7 @@
 // Example Album
-var albumCézanne = {
+var albumCezanne = {
      name: 'The Colors',
-     artist: 'Paul Cézanne',
+     artist: 'Paul Cezanne',
      label: 'Post-Impressionism',
      year: '1839',
      albumArtUrl: 'assets/images/album_covers/07.png',
@@ -28,8 +28,7 @@ var albumPicasso = {
          { name: 'Magenta', length: '2:15'}
      ]
  };
- 
- // Another Example Album
+
  var albumMarconi = {
      name: 'The Telephone',
      artist: 'Guglielmo Marconi',
@@ -83,13 +82,13 @@ var setCurrentAlbum = function(album) {
  window.onload = function() {
      setCurrentAlbum(albumPicasso);
      
-     var albums = [albumPicasso, albumCézanne, albumMarconi];
+     var albums = [albumPicasso, albumCezanne, albumMarconi];
      var i = 1;
      albumImage.addEventListener("click", function(event) {
          setCurrentAlbum(albums[i]);
          i++;
          if (i == albums.length) {
-             index = 0;
+             i = 0;
          }
      };)
      
