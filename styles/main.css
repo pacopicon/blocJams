@@ -67,8 +67,8 @@ body {
     /* #3 */
     text-decoration: none;
     cursor: pointer;
-    -webkit-transition: padding-right 2s, font-size 2s, letter-spacing 2s, color 2s, -webkit-transform 2s;
-    transition: padding-right 2s, font-size 2s, letter-spacing 2s, color 2s, -webkit-transform 2s;
+    -webkit-transition: padding-right 0.5s, font-size 0.5s, letter-spacing 0.5s, color 0.5s, -webkit-transform 0.5s;
+    transition: padding-right 0.5s, font-size 0.5s, letter-spacing 0.5s, color 0.5s, -webkit-transform 0.5s;
 }
 /* #5 */
 .links-container .navbar-link:hover {
@@ -76,9 +76,8 @@ body {
 
 .navbar-link:hover {
     color: rgb(233,50,117);
-    font-size: 3.125rem;
-    letter-spacing: 0.25rem;
-    padding-right: 15rem;
+    letter-spacing: 2rem;
+    padding-right: 1rem;
     -webkit-transform: rotate(360deg);
     transform: rotate(360deg);
 }
