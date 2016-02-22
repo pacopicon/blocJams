@@ -46,7 +46,7 @@ var albumPicasso = {
 
 var createSongRow = function(songNumber, songName, songLength) {
     var template =
-        '<tr class="album-view-song-item">'
+    '<tr class="album-view-song-item">'
     + '  <td class="song-item-number" data-song-number="' + songNumber + '">' + songNumber + '</td>'
     + '  <td class="song-item-title">' + songName + '</td>'
     + '  <td class="song-item-duration">' + songLength + '</td>'
@@ -54,6 +54,25 @@ var createSongRow = function(songNumber, songName, songLength) {
     ;
  
     var $row = $(template);
+    
+    var clickHandler = function() {
+        var songNumber = $(this).attr('data-song-number');
+
+        if (currentlyPlayingSong !== null) {
+            // Revert to song number for currently playing song because user started playing new song.
+            var currentlyPlayingCell = $('.song-item-number[data-song-number="' + currentlyPlayingSong + '"]');
+            currentlyPlayingCell.html(currentlyPlayingSong);
+        }
+        if (currentlyPlayingSong !== songNumber) {
+            // Switch from Play -> Pause button to indicate new song is playing.
+            $(this).html(pauseButtonTemplate);
+            currentlyPlayingSong = songNumber;
+        } else if (currentlyPlayingSong === songNumber) {
+            // Switch from Pause -> Play button to pause currently playing song.
+            $(this).html(playButtonTemplate);
+            currentlyPlayingSong = null;
+        }
+    };
     
     var onHover = function(event) {
         var songNumberCell = $(this).find('.song-item-number');
@@ -77,25 +96,7 @@ var createSongRow = function(songNumber, songName, songLength) {
     $row.hover(onHover, offHover);
     return $row;
     
-    var clickHandler = function() {
-	var songNumber = $(this).attr('data-song-number');
-
-	if (currentlyPlayingSong !== null) {
-		// Revert to song number for currently playing song because user started playing new song.
-		var currentlyPlayingCell = $('.song-item-number[data-song-number="' + currentlyPlayingSong + '"]');
-		currentlyPlayingCell.html(currentlyPlayingSong);
-	}
-	if (currentlyPlayingSong !== songNumber) {
-		// Switch from Play -> Pause button to indicate new song is playing.
-		$(this).html(pauseButtonTemplate);
-		currentlyPlayingSong = songNumber;
-	} else if (currentlyPlayingSong === songNumber) {
-		// Switch from Pause -> Play button to pause currently playing song.
-		$(this).html(playButtonTemplate);
-		currentlyPlayingSong = null;
-	}
 };
- };
 
 var setCurrentAlbum = function(album) {
     var $albumTitle = $('.album-view-title');
@@ -109,7 +110,7 @@ var setCurrentAlbum = function(album) {
     $albumReleaseInfo.text(album.year + ' ' + album.label);
     $albumImage.attr('src', album.albumArtUrl);
  
-    $albumSongList.epmty();
+    $albumSongList.empty();
  
     for (i = 0; i < album.songs.length; i++) {
         var $newRow = createSongRow(i + 1, album.songs[i].name, album.songs[i].length);
